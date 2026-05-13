@@ -1,6 +1,6 @@
 # portfolio-v1
 
-My first ever porfolio website. Connect with me if you have a job opportunities for me. Leave critcs for my digital home if you have any. Thanks for coming. Visit Again.
+My first ever portfolio website. Connect with me if you have a job opportunities for me. Leave critcs for my digital home if you have any. Thanks for coming. Visit Again.
 
 ## React + TypeScript + Vite
 
