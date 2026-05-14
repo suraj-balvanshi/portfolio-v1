@@ -1,3 +1,5 @@
+begin;
+
 -- 1. Enable the the native moddatetime extension
 create extension if not exists moddatetime schema extensions;
 
@@ -39,3 +41,5 @@ values (
     "hobbies": ["reading", "movies", "trekking", "esports", "coding", "travel", "learning languages", "-OH"]
   }'::jsonb
 );
+
+commit;
