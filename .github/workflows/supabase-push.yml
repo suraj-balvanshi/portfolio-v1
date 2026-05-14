@@ -36,5 +36,4 @@ jobs:
       - name: Push migrations
         run: |
           supabase db push \
-            --linked \
-            --skip-pooler
+            --linked
