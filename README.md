@@ -2,15 +2,25 @@
 
 My first ever portfolio website. Connect with me if you have a job opportunities for me. Leave critcs for my digital home if you have any. Thanks for coming.
 
-A multi-page portfolio website built with React, TypeScript, and Tailwind CSS. Currently under active development.
+A portfolio website built with React, TypeScript, and Tailwind CSS. Currently under active development with foundational setup completed.
 
 ## Project Overview
 
 This portfolio serves as a personal website to showcase projects, blog posts, and professional information. The project is designed with using shadcn/ui components.
 
-## Features
+## Current Progress
 
-- **Multi-page Architecture** - Home, blog, and project showcase pages
+### Implemented Features
+
+- **Foundation Setup** - Vite, React 19, TypeScript, Tailwind CSS 4
+- **State Management** - Basic Zustand store for UI state (profile visibility toggle)
+- **Data Fetching** - TanStack Query integration for fetching author profile from Supabase
+- **Backend Connection** - Supabase client configured (author table only)
+- **Basic UI** - Simple profile display component with toggle functionality
+
+### Features to Implement
+
+- **Multi-page Architecture** - Home, blog, and project showcase pages (requires React Router)
 - **Responsive Design** - Thanks to Tailwind CSS
 - **Modern UI Components** - Built with shadcn/ui and Radix UI primitives
 - **Type-safe Development** - Full TypeScript implementation
@@ -22,18 +32,19 @@ This portfolio serves as a personal website to showcase projects, blog posts, an
 - **React 19** - UI framework
 - **TypeScript** - Type safety and developer experience
 - **Tailwind CSS 4** - Styling and layout
-- **shadcn/ui** - Component library (installation pending component setup)
+- **shadcn/ui** - Component library (pending integration)
 - **Radix UI** - Accessible primitive components
-- **ESint** - Code linting
+- **ESLint** - Code linting
+- **Zustand** - Global state management (basic UI store implemented)
+- **TanStack Query** - Server state and data fetching (author data fetching implemented)
+- **Supabase** - Backend database (client configured, author table only)
 
 ## Planned Integrations
 
 - **React Router** - Client-side routing for multi-page navigation
 - **i18next** - Internationalization and localization
 - **Zod** - Schema validation
-- **Zustand** - Global state management
-- **TanStack Query** - Server state and data fetching
-- **Supabase** - Backend database and authentication
+- **Supabase** - Full backend database and authentication (posts, projects, comments tables)
 - **React Helmet** - Dynamic SEO metadata
 
 ## Project Structure
@@ -41,9 +52,17 @@ This portfolio serves as a personal website to showcase projects, blog posts, an
 ```
 portfolio-v1/
 ├── src/
+│   ├── api/           # API functions (author.ts implemented)
+│   │   └── author.ts
 │   ├── assets/          # Static assets (images, icons)
-│   ├── lib/             # Utility functions
-│   ├── App.tsx          # Root application component
+│   ├── lib/             # Utility functions (supabaseClient.ts, utils.ts)
+│   │   ├── supabaseClient.ts
+│   │   └── utils.ts
+│   ├── store/           # Zustand stores (ui-store.ts)
+│   │   └── ui-store.ts
+│   ├── types/           # TypeScript schemas and types
+│   │   └── schema.ts
+│   ├── App.tsx          # Root application component (with profile toggle and data fetching)
 │   ├── App.css          # Application styles
 │   ├── main.tsx         # Application entry point
 │   └── index.css        # Global styles and Tailwind
@@ -93,12 +112,15 @@ The project uses ESLint with TypeScript-aware linting rules to maintain code qua
 
 ## Future Plans
 
-- Implement blog
+- Implement routing with React Router for multi-page navigation
+- Add shadcn/ui components for modern UI
+- Implement blog functionality
 - Add project showcase with filtering
 - Integrate blog comments system
 - Add admin/content management features
 - Implement user authentication
 - Add internationalization support
+- Complete Supabase integration for all planned tables (posts, projects, comments)
 
 ---
 
@@ -116,6 +138,6 @@ This project is developed with AI-assisted development practices:
 - This repository is a portfolio website project built with React, TypeScript, Vite, and Tailwind CSS
 - OpenCode is used as the primary AI-assisted development tool
 - MemPalace integration is planned for persistent repository memory
-- Supabase backend integration is pending implementation
-- Zustand and TanStack Query are planned for state management architecture
-- Current project phase: Early development with only initial/early stage/foundation setup
+- Supabase backend integration is partially implemented (client configured, author table only)
+- Zustand and TanStack Query are partially implemented (UI store and data fetching for author)
+- Current project phase: Foundation setup completed, ready for feature implementation
