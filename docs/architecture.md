@@ -17,9 +17,14 @@ This document describes the current and planned architecture for the portfolio w
 
 ```
 src/
+├── api/           # API functions (currently only author.ts)
+│   └── author.ts
 ├── assets/           # Static images and icons
-├── lib/              # Utility functions (utils.ts with cn helper)
-├── App.tsx           # Root component
+├── lib/              # Utility functions (utils.ts with cn helper, supabaseClient.ts)
+├── store/            # Zustand stores (ui-store.ts)
+├── types/            # TypeScript schemas and types
+│   └── schema.ts
+├── App.tsx           # Root component (with basic profile toggle and data fetching)
 ├── App.css           # Component styles
 ├── main.tsx          # Entry point
 └── index.css         # Global styles + Tailwind directives
@@ -28,7 +33,7 @@ src/
 ### Styling Strategy
 
 - Tailwind CSS 4 for utility-first styling
-- shadcn/ui components scaffolded but not yet configured
+- shadcn/ui components scaffolded but not yet configured (planned)
 - Radix UI primitives available as peer dependency
 
 ### Build & Dev Commands
@@ -40,24 +45,35 @@ npm run lint     # ESLint check
 npm run preview # Preview production build
 ```
 
+### Current State Summary
+
+The project currently implements a basic setup with:
+- Vite, React 19, TypeScript, Tailwind CSS 4
+- A simple Zustand store for UI state (profile visibility)
+- TanStack Query for data fetching (author profile from Supabase)
+- Supabase client configured (but only the 'website_author' table is used)
+- No routing implemented (single page application)
+- No shadcn/ui components integrated yet
+- No blog, project, or comment features
+
 ---
 
 ## Planned Architecture
 
 ### Routing Architecture
 
-**Technology**: React Router v7
+**Technology**: React Router v7 (pending - not yet implemented)
 
 ```
 src/
-├── pages/           # Route page components
+├── pages/           # Route page components (to be created)
 │   ├── Home.tsx
 │   ├── Blog.tsx
 │   ├── BlogPost.tsx
 │   └── Projects.tsx
 ├── components/      # Reusable UI components
-├── layouts/         # Page layout wrappers
-└── App.tsx          # Router configuration
+├── layouts/         # Page layout wrappers (to be created)
+└── App.tsx          # Router configuration (to be updated)
 ```
 
 Routes planned:
@@ -69,35 +85,39 @@ Routes planned:
 
 ### State Management
 
-**Technology**: Zustand + TanStack Query
+**Technology**: Zustand + TanStack Query (partially implemented - Zustand store for UI, TanStack Query for data fetching)
 
-- **Zustand** - Global client state (theme, user preferences, UI state)
-- **TanStack Query** - Server state (blog posts, project data, comments)
+- **Zustand** - Global client state (theme, user preferences, UI state) - implemented basic UI store
+- **TanStack Query** - Server state (blog posts, project data, comments) - implemented for author data fetching
 
 ```
 src/
 ├── stores/          # Zustand stores
-│   └── useAppStore.ts
-├── hooks/           # TanStack Query hooks
+│   └── useUIStore.ts (current - for UI state like profile visibility)
+├── hooks/           # TanStack Query hooks (to be created for posts, projects)
 │   ├── usePosts.ts
 │   └── useProjects.ts
-└── api/             # API client functions
-    └── supabase.ts
+└── api/             # API client functions (partially implemented)
+    ├── author.ts    # implemented
+    ├── posts.ts     # to be created
+    ├── projects.ts  # to be created
+    └── comments.ts  # to be created
 ```
 
 ### Supabase Integration
 
-**Technology**: Supabase (pending)
+**Technology**: Supabase (partially implemented - client configured, only author table used)
 
 ```
 src/
 ├── lib/
-│   └── supabase.ts  # Supabase client initialization
+│   └── supabase.ts  # Supabase client initialization (implemented)
 ├── api/             # Database operations
-│   ├── posts.ts     # Blog post CRUD
-│   ├── projects.ts  # Project CRUD
-│   └── comments.ts  # Blog comments
-└── types/           # Generated database types
+│   ├── posts.ts     # Blog post CRUD (to be created)
+│   ├── projects.ts  # Project CRUD (to be created)
+│   ├── comments.ts  # Blog comments (to be created)
+│   └── author.ts    # implemented (for author profile)
+└── types/           # Generated database types (to be generated)
 ```
 
 Planned tables:
@@ -111,31 +131,31 @@ Planned tables:
 ```
 src/
 ├── components/
-│   ├── ui/          # shadcn/ui base components
+│   ├── ui/          # shadcn/ui base components (not yet integrated)
 │   │   ├── button.tsx
 │   │   ├── card.tsx
 │   │   └── ...
-│   ├── layout/      # Layout components
+│   ├── layout/      # Layout components (to be created)
 │   │   ├── Header.tsx
 │   │   ├── Footer.tsx
 │   │   └── Layout.tsx
-│   ├── features/   # Feature-specific components
+│   ├── features/   # Feature-specific components (to be created)
 │   │   ├── blog/
 │   │   └── projects/
-│   └── shared/      # Cross-cutting components
+│   └── shared/      # Cross-cutting components (to be created)
 └── App.tsx
 ```
 
 **Pattern**:
 
-- `ui/` - Primitive components from shadcn/ui
-- `layout/` - Structural components (header, footer, navigation)
-- `features/` - Domain-specific components organized by feature
-- `shared/` - Cross-cutting components (SEO Helmet, loading states)
+- `ui/` - Primitive components from shadcn/ui (planned)
+- `layout/` - Structural components (header, footer, navigation) (planned)
+- `features/` - Domain-specific components organized by feature (planned)
+- `shared/` - Cross-cutting components (SEO Helmet, loading states) (planned)
 
 ### shadcn/ui Usage
 
-Components will be installed via CLI:
+Components will be installed via CLI (pending):
 
 ```bash
 npx shadcn@latest add button
