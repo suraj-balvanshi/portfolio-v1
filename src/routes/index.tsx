@@ -1,12 +1,15 @@
-import "./App.css";
+import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAuthor } from "./api/author";
-import { useUIStore } from "./store/ui-store";
+import { useUIStore } from "../store/ui-store";
+import { apiRequest } from "#/lib/apiClient";
+import type { WebsiteAuthor } from "#/types/schema";
 
-export function useAuthorProfile(isEnabled: boolean) {
+// react query
+function useAuthorProfile(isEnabled: boolean) {
   return useQuery({
     queryKey: ["author"],
-    queryFn: fetchAuthor,
+    queryFn: async () =>
+      await apiRequest<WebsiteAuthor>("/api/author", { method: "GET" }),
     enabled: isEnabled,
     retry: false,
     refetchOnWindowFocus: false,
@@ -14,7 +17,13 @@ export function useAuthorProfile(isEnabled: boolean) {
   });
 }
 
-function App() {
+// tanstack route
+export const Route = createFileRoute("/")({
+  component: Home,
+});
+
+// UI
+function Home() {
   const showProfile = useUIStore((state) => state.showProfile);
   const toggleProfile = useUIStore((state) => state.toggleProfile);
   const { data, isLoading, isFetching } = useAuthorProfile(showProfile);
@@ -52,5 +61,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

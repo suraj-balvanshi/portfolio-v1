@@ -7,10 +7,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
 
 # Editor directories and files
 .vscode/*
@@ -27,3 +23,17 @@ dist-ssr
 # MemPalace per-project files (issue #185)
 mempalace.yaml
 entities.json
+
+# tanstack
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+__unconfig*
+todos.json

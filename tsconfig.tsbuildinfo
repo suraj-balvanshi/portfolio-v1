@@ -1,0 +1,1 @@
+{"root":["./vite.config.ts","./src/routetree.gen.ts","./src/api-supabase/author.ts","./src/api-supabase/supabaseclient.server.ts","./src/lib/apiclient.ts","./src/lib/utils.ts","./src/routes/api/author.ts","./src/store/ui-store.ts","./src/types/schema.ts","./src/router.tsx","./src/routes/__root.tsx","./src/routes/index.tsx"],"version":"6.0.3"}
