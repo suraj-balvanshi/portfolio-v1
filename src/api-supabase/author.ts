@@ -1,7 +1,7 @@
-import { supabase } from "../lib/supabaseClient";
+import { supabase } from "./supabaseClient.server";
 import { WebsiteAuthorSchema, type WebsiteAuthor } from "../types/schema";
 
-export const fetchAuthor = async (): Promise<WebsiteAuthor> => {
+export const getAuthor = async (): Promise<WebsiteAuthor> => {
   const USERNAME = "marquez";
   const { data, error } = await supabase
     .from("website_author")
