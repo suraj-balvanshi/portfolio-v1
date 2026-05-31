@@ -11,6 +11,11 @@ export default defineConfig({
     devtools(),
     nitro({
       preset: "node-server",
+      output: {
+        dir: "dist",
+        serverDir: "dist/server",
+        publicDir: "dist/public",
+      },
     }),
     tailwindcss(),
     tanstackStart({
