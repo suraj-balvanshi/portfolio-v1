@@ -8,6 +8,7 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import globalCss from "../styles.css?url";
+import { Navbar } from "#/components/navbar";
 
 interface MyRouterContext {
   queryClient: QueryClient;
@@ -36,11 +37,18 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <QueryClientProvider client={queryClient}>
-        <head>
-          <HeadContent />
-        </head>
-        <body>
-          {children}
+        <body className="root-body relative flex flex-col items-center min-h-screen">
+          <header>
+            <HeadContent />
+            <div className="root-header flex items-center justify-between gap-4">
+              <h1>Marquez Portfolio</h1>
+              <Navbar />
+            </div>
+          </header>
+          <main className="root-main flex-grow">{children}</main>
+          <footer className="root-footer mt-auto text-center">
+            <p>&copy; 2026 Marquez. All rights reserved.</p>
+          </footer>
           <TanStackDevtools
             config={{
               position: "bottom-right",

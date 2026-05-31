@@ -5,7 +5,7 @@ import { apiRequest } from "#/lib/apiClient";
 import type { WebsiteAuthor } from "#/types/schema";
 
 // react query
-function useAuthorProfile(isEnabled: boolean) {
+function useAuthorQuery(isEnabled: boolean) {
   return useQuery({
     queryKey: ["author"],
     queryFn: async () =>
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   const showProfile = useUIStore((state) => state.showProfile);
   const toggleProfile = useUIStore((state) => state.toggleProfile);
-  const { data, isLoading, isFetching } = useAuthorProfile(showProfile);
+  const { data, isLoading, isFetching } = useAuthorQuery(showProfile);
 
   return (
     <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
