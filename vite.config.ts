@@ -9,14 +9,7 @@ import path from "path";
 export default defineConfig({
   plugins: [
     devtools(),
-    nitro({
-      preset: "node-server",
-      output: {
-        dir: "dist",
-        serverDir: "dist/server",
-        publicDir: "dist/public",
-      },
-    }),
+    nitro(),
     tailwindcss(),
     tanstackStart({
       prerender: {
